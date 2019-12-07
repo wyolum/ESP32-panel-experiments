@@ -13,7 +13,8 @@
 // Standard Libraries - Already Installed if you have ESP32 set up
 // ----------------------------
 
-#include <WiFi.h>
+//#include <WiFi.h>
+#include <WiFiManager.h>
 
 // ----------------------------
 // Additional Libraries - each one of these will need to be installed.
@@ -188,6 +189,14 @@ void drawConnecting(int x = 0, int y = 0)
   tetris.drawChar("g", x + 47, y, tetris.tetrisGREEN);
 }
 
+WiFiManager wifiManager;
+void wifi_setup(){
+  wifiManager.autoConnect("WyoTixel");
+  Serial.println("Yay connected!");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
 void setup() {
   Serial.begin(115200);
 
@@ -197,8 +206,9 @@ void setup() {
 
   // Set WiFi to station mode and disconnect from an AP if it was Previously
   // connected
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  wifi_setup();
+  //WiFi.mode(WIFI_STA);
+  //WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
