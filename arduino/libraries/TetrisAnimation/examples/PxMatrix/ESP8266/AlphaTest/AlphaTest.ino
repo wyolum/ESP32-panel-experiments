@@ -105,25 +105,25 @@ void setup() {
   delay(2000);
   timer_ticker.attach(0.05, number_updater);
 
-  delay(15000);
+  delay(20000);
   tetris.setText("*+,-./");
 
-  delay(15000);
+  delay(20000);
   tetris.setText("01234567");
 
-  delay(15000);
+  delay(20000);
   tetris.setText("89:;<=>?");
 
-  delay(15000);
+  delay(20000);
   tetris.setText("@ABCDEFG");
 
-  delay(15000);
+  delay(20000);
   tetris.setText("HIJKLMNO");
 
-  delay(15000);
+  delay(20000);
   tetris.setText("PQRSTUVW");
 
-  delay(15000);
+  delay(20000);
   tetris.setText("XYZ");
 
 

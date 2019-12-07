@@ -1,11 +1,19 @@
 #include <ezTime.h>
-#include <WiFi.h>
-
+//#include <WiFi.h>
+#include <WiFiManager.h>
+WiFiManager wifiManager;
+void wifi_setup(){
+  wifiManager.autoConnect("WyoTixel");
+  Serial.println("Yay connected!");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
 void setup() {
 
 	Serial.begin(115200);
 	while (!Serial) { ; }		// wait for Serial port to connect. Needed for native USB port only
-	WiFi.begin("your-ssid", "your-password");
+	//WiFi.begin("your-ssid", "your-password");
+	wifi_setup();
 
 	// Uncomment the line below to see what it does behind the scenes
 	// setDebug(INFO);
