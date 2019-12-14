@@ -18,7 +18,6 @@ portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 
 #ifdef ESP8266
 
-#include <Ticker.h>
 Ticker display_ticker;
 #define P_LAT 16
 #define P_A 5

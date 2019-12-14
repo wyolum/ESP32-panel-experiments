@@ -45,11 +45,8 @@ void setup() {
 
 	// See if local time can be obtained (does not work in countries that span multiple timezones)
 	Serial.print(F("Local (GeoIP):   "));
-	if (myTZ.setLocation()) {
-		Serial.println(myTZ.dateTime());
-	} else {
-		Serial.println(errorString());
-	}
+	Serial.print("myTZ.dateTime():");Serial.println(myTZ.dateTime());
+	Serial.print("myTZ.errorString:");Serial.println(errorString());
 
 }
 
