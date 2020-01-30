@@ -76,35 +76,36 @@ class Patterns : public Playlist {
  //   PatternMultipleStream4 multipleStream4; // doesn't work
  //   PatternMultipleStream5 multipleStream5; // doesn't work
  //   PatternMultipleStream8 multipleStream8; // doesn't work
-    PatternSpiro spiro;
  //   PatternRadar radar;
+ //   PatternIncrementalDrift2 incrementalDrift2;
+ //   PatternSpin spin;
+ //   PatternBounce bounce;
+ //   PatternInvadersSmall invadersSmall;
+ //   PatternInvadersMedium invadersMedium;
+ //   PatternInvadersLarge invadersLarge;
+ //   PatternCube cube;
+ //   PatternFire fire;
+ //   PatternPulse pulse;
+ //  PatternSpark spark;
+    /*
+    */
+    PatternSpiro spiro;
     PatternSwirl swirl;
     PatternPendulumWave pendulumWave;
     PatternFlowField flowField;
     PatternIncrementalDrift incrementalDrift;
- //   PatternIncrementalDrift2 incrementalDrift2;
     PatternMunch munch;
     PatternElectricMandala electricMandala;
- //   PatternSpin spin;
     PatternSimplexNoise simplexNoise;
     PatternWave wave;
     PatternAttract attract;
- //   PatternBounce bounce;
-    PatternFlock flock;
     PatternInfinity infinity;
     PatternPlasma plasma;
- //   PatternInvadersSmall invadersSmall;
- //   PatternInvadersMedium invadersMedium;
- //   PatternInvadersLarge invadersLarge;
     PatternSnake snake;
- //   PatternCube cube;
- //   PatternFire fire;
     PatternLife life;
     PatternMaze maze;
- //   PatternPulse pulse;
- //  PatternSpark spark;
     PatternSpiral spiral;
-
+    PatternFlock flock;
     int currentIndex = 0;
     Drawable* currentItem;
 
@@ -120,8 +121,7 @@ class Patterns : public Playlist {
 
     Drawable* items[PATTERN_COUNT] = {
    //   &patternTest,     // ok 
-      &spiro,           // cool
-   //   &paletteSmear,  // fail
+      //   &paletteSmear,  // fail
    //   &multipleStream, // fail
    //   &multipleStream8,// fail
    //   &multipleStream5,// fail
@@ -129,33 +129,38 @@ class Patterns : public Playlist {
    //    &radar, // fail
    //   &multipleStream4, // fail
    //   &multipleStream2, // fail
+   //   &incrementalDrift2, // 13 fail
+   //   &spin, // 16 ok but repeditivev
+   //   &rainbowFlag, //20 // fail
+   //   &bounce, // boncing line crap
+   //   &invadersSmall, // works ish
+   //   &invadersMedium, // fail
+   //   &invadersLarge, // fail
+   //   &cube, // works ish
+   //   &fire, // ok ish
+    //  &pulse,// fail
+    //  &spark, // same as fire
+      /*
+      */
+      &spiro,           // cool
       &life, // ok
       &flowField,
       &pendulumWave, //11 ok
       &incrementalDrift, //12 ok
-   //   &incrementalDrift2, // 13 fail
       &munch, // 14 ok
       &electricMandala, // 15 ok
-   //   &spin, // 16 ok but repeditivev
       &simplexNoise, // 17 - cool!
       &wave, // 18 ok
-   //   &rainbowFlag, //20 // fail
       &attract, // 21 ok
       &swirl, // 22
-   //   &bounce, // boncing line crap
       &flock, // works
       &infinity, // works
       &plasma, // works
-   //   &invadersSmall, // works ish
-   //   &invadersMedium, // fail
-   //   &invadersLarge, // fail
       &snake, // ok
-   //   &cube, // works ish
-   //   &fire, // ok ish
       &maze, // ok
-    //  &pulse,// fail
-    //  &spark, // same as fire
       &spiral, // ok
+      /*
+      */
     };
 
   public:

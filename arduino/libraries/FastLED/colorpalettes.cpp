@@ -20,6 +20,29 @@ FASTLED_USING_NAMESPACE
 extern const TProgmemRGBPalette16 CloudColors_p FL_PROGMEM =
 {
     CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Blue,
+
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::Blue,
+
+    CRGB::Blue,
+    CRGB::Blue,
+    CRGB::SkyBlue,
+    CRGB::SkyBlue,
+
+    CRGB::LightBlue,
+    CRGB::White,
+    CRGB::LightBlue,
+    CRGB::SkyBlue
+};
+
+extern const TProgmemRGBPalette16 origCloudColors_p FL_PROGMEM =
+{
+    CRGB::Blue,
     CRGB::DarkBlue,
     CRGB::DarkBlue,
     CRGB::DarkBlue,

@@ -313,8 +313,13 @@ inline void fm612xWriteRegister(uint16_t reg_value, uint8_t reg_position);
 };
 
 // Pass 8-bit (each) R,G,B, get back 16-bit packed color
-inline uint16_t PxMATRIX::color565(uint8_t r, uint8_t g, uint8_t b) {
+inline uint16_t rgb565(uint8_t r, uint8_t g, uint8_t b) {
   return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
+}
+
+// Pass 8-bit (each) R,G,B, get back 16-bit packed color
+inline uint16_t PxMATRIX::color565(uint8_t r, uint8_t g, uint8_t b) {
+  return rgb565(r, g, b);
 }
 
 // Init code common to both constructors

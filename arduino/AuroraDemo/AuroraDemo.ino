@@ -80,8 +80,6 @@ void loop()
 {
     // menu.run(mainMenuItems, mainMenuItemCount);  
     ms_current = millis();
-
-  
     if ( (ms_current - ms_previous) > ms_animation_max_duration ) 
     {
      //  patterns.moveRandom(1);

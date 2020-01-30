@@ -25,6 +25,9 @@ Timezone myTZ, othTZ;
 PxMATRIX display(64,32,P_LAT, P_OE,P_A,P_B,P_C,P_D);
 //PxMATRIX display(64,64,P_LAT, P_OE,P_A,P_B,P_C,P_D,P_E);
 
+// This draws the weather icons and temperature
+void draw_weather_icon (PxMATRIX display, uint16_t icon, uint16_t location, int temp,bool ab);
+
 void IRAM_ATTR display_updater(){
   // Increment the counter and set the time of ISR
   portENTER_CRITICAL_ISR(&timerMux);
@@ -197,12 +200,63 @@ void loop() {
 
   display.setTextColor(textColor1);
   display.setCursor(0, 8 * 2);
-  display.print(Olson2City(othTZ.getOlson()));
+  //display.print(Olson2City(othTZ.getOlson()));
 
   timeString = othTZ.dateTime("g:i:s");
   display.setCursor(0, 8 * 3);
-  display.print(timeString);
+  //display.print(timeString);
 
+  //################################################################################
+  //draw_weather_icon (display, 0, 0, 0,0);
+  uint16_t icon = 0;
+  uint16_t x, y;
+  int temp;
+  bool ab = myTZ.second()%2;
+  display.setFont(&TomThumb);
+  for(x = 0; x < 64; x += 11){
+    for(y = 0; y < 32; y += 11){
+      for (int yy=0; yy<10;yy++){
+	  for (int xx=0; xx<10;xx++){
+	      uint16_t byte_pos=(xx+icon*10)*2+yy*220;
+	      if (ab){
+		wi_single_double.two[1]=weather_icons_a[byte_pos];
+		wi_single_double.two[0]=weather_icons_a[byte_pos+1];
+	      }
+	      else{
+		wi_single_double.two[1]=weather_icons_b[byte_pos];
+		wi_single_double.two[0]=weather_icons_b[byte_pos+1];
+	      }
+	      display.drawPixel(1+xx+x,yy+y,wi_single_double.one);
+	  }
+      }
+      icon++;
+      icon%=11;
+    }
+  }
+  //################################################################################
+  
   display.showBuffer();
   delay(20);
+}
+
+// This draws the weather icons and temperature
+void draw_weather_icon (PxMATRIX display, uint16_t icon, uint16_t location, int temp,bool ab){
+  int pixel_shift=0;
+  if ((temp>-10)&&(temp<10))
+  pixel_shift=2;
+
+  if (location==0)
+  display.setCursor(2+pixel_shift,16);
+  else
+  display.setCursor(14+pixel_shift,16);
+
+  if (temp<0)
+  {
+    temp=temp*-1;
+    if (location==0)
+    display.drawPixel(pixel_shift,13, rgb565(255, 255, 255));
+    else
+    display.drawPixel(12+pixel_shift,13,rgb565(255, 255, 255));
+  }
+  display.println(temp);
 }
